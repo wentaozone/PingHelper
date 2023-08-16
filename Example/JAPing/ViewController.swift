@@ -28,7 +28,8 @@ class ViewController: UIViewController {
     }
     
     func mutiplePing() {
-        hostSelector.startPing(10) { [unowned self] (fastestHost, sortedPingResults) in
+        hostSelector.startPing(10) { [weak self] (fastestHost, sortedPingResults) in
+            guard self != nil else { return }
             print("Fastest: \(fastestHost)")
             print(sortedPingResults)
 //            self.mutiplePing()
