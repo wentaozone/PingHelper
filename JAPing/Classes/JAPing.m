@@ -181,7 +181,7 @@ typedef void (^DelayPingHandle)(JAPing* ping);
 
 
 - (void)generateStatistics {
-    NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval current = [NSDate timeIntervalSinceReferenceDate] * 1000;
     for (JAPingPacket *packet in _packets) {
         BOOL isTimeout = current - packet.sendTime >= _currentPingConfigure.timeout;
         
@@ -227,7 +227,7 @@ typedef void (^DelayPingHandle)(JAPing* ping);
 - (nullable JAPingPacket*)setupPacketDidSent:(uint16_t)sequenceNumber data:(NSData*)data {
     JAPingPacket *packet = [[JAPingPacket alloc] initWithSequenceNumber:sequenceNumber sendData:data];
     packet.state = PacketStateDidSend;
-    packet.sendTime = [NSDate timeIntervalSinceReferenceDate];
+    packet.sendTime = [NSDate timeIntervalSinceReferenceDate] * 1000;
     [_packets addObject:packet];
     
     return packet;
@@ -240,7 +240,7 @@ typedef void (^DelayPingHandle)(JAPing* ping);
 }
 
 - (nullable JAPingPacket*)setupPacketDidRecv:(uint16_t)sequenceNumber {
-    NSTimeInterval recvTime = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval recvTime = [NSDate timeIntervalSinceReferenceDate] * 1000;
 
     JAPingPacket *packet = [self packet:sequenceNumber];
     packet.state = PacketStateDidRecv;

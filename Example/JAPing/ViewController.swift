@@ -63,7 +63,8 @@ class ViewController: UIViewController {
             }
         }
         
-        baiduPinger.configuare.pingCount = 8
+        baiduPinger.configuare.pingCount = 25
+        baiduPinger.configuare.waitInterval = 0.2
         baiduPinger.start()
     }
 }
