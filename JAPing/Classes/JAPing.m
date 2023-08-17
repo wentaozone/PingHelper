@@ -16,6 +16,7 @@
         _pingCount = 1;
         _timeout = 60;
         _waitInterval = 1;
+        _packageSize = 0;
     }
     return self;
 }
@@ -141,8 +142,17 @@ typedef void (^DelayPingHandle)(JAPing* ping);
         [self stopPing];
         return;
     }
-    
-    [_pinger sendPingWithData:nil];
+    if (_configuare.packageSize <= 0) {
+        [_pinger sendPingWithData:nil];
+    } else {
+        NSMutableData *data = [NSMutableData dataWithCapacity:_configuare.packageSize];
+        for (int i = 0; i<_configuare.packageSize; i++) {
+            int val = i % (126-33) + 33;
+            NSData *byte = [NSData dataWithBytes:&val length:1];
+            [data appendData:byte];
+        }
+        [_pinger sendPingWithData:data];
+    }
     _startedPingCount++;
 }
 

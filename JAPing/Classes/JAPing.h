@@ -14,6 +14,8 @@
 @property (nonatomic) NSTimeInterval timeout;   // default 60
 @property (nonatomic) NSTimeInterval waitInterval;  // default 1
 
+@property (nonatomic) int packageSize; // default 64
+
 @end
 
 

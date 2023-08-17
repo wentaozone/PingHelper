@@ -17,7 +17,7 @@ extension Double {
 }
 
 class ViewController: UIViewController {
-    let baiduPinger = JAPing(hostName: "baidu.com", unexpertError: nil)
+    let baiduPinger = JAPing(hostName: "10.1.16.70", unexpertError: nil)
     let hostSelector = JAHostSelector(hosts: ["baidu.com", "jd.com"]);
     
     override func viewDidLoad() {
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     }
     
     func pingBaidu() {
+        baiduPinger.configuare.packageSize = 1000
         baiduPinger.resolvedHostHandle = { pinger, ip in
             print("PING \(pinger.hostName) (\(ip))")
         }
