@@ -10,11 +10,11 @@
 @interface JAPingConfiguare : NSObject <NSCopying>
 
 @property (nonatomic) NSInteger pingCount;  // default 1, 0 means forever
-//TODO unimplemente
-@property (nonatomic) NSTimeInterval timeout;   // default 60
-@property (nonatomic) NSTimeInterval waitInterval;  // default 1
 
-@property (nonatomic) int packageSize; // default 64
+@property (nonatomic) NSTimeInterval timeout;   // default 2s
+@property (nonatomic) NSTimeInterval waitInterval;  // default 1s
+
+@property (nonatomic) int packageSize; // default 64 bytes
 
 @end
 

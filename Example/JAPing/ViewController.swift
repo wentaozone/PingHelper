@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         
         pingBaidu()
 //        mutiplePing()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(taped))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func taped() {
+        pingBaidu()
     }
     
     func mutiplePing() {

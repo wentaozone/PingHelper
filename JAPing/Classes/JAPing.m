@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         _pingCount = 1;
-        _timeout = 60;
+        _timeout = 2000;
         _waitInterval = 1;
         _packageSize = 0;
     }
